@@ -17,13 +17,13 @@ namespace StaticMinimap
         {
             if (__instance.m_mainCamera != null)
             {
-                __instance.m_north.localRotation = Quaternion.Euler(0f, 0f, MainGameManager.Ref.dayAndNightScript.m_northDirection);
-                __instance.m_tamer.localRotation = Quaternion.Euler(0f, 0f, -__instance.m_player.localEulerAngles.y);
-                __instance.m_northDirection = Quaternion.Euler(0f, 0f, 0f);
+                __instance.m_north.localRotation = Quaternion.Euler(0f, 0f, 0f);
+                __instance.m_tamer.localRotation = Quaternion.Euler(0f, 0f, -__instance.m_player.localEulerAngles.y + MainGameManager.Ref.dayAndNightScript.m_northDirection);
+                __instance.m_northDirection = Quaternion.Euler(0f, 0f, MainGameManager.Ref.dayAndNightScript.m_northDirection);
             }
 
-            if(__instance.IsOpened())
-                __instance.m_mapRoot.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            if (__instance.IsOpened())
+                __instance.m_mapRoot.localRotation = Quaternion.Euler(0f, 0f, MainGameManager.Ref.dayAndNightScript.m_northDirection);
         }
 
         [HarmonyPatch(typeof(uMinimap), "CreateMarker")]
@@ -32,13 +32,13 @@ namespace StaticMinimap
         {
             if (__instance.m_mainCamera != null)
             {
-                __instance.m_north.localRotation = Quaternion.Euler(0f, 0f, MainGameManager.Ref.dayAndNightScript.m_northDirection);
-                __instance.m_tamer.localRotation = Quaternion.Euler(0f, 0f, -__instance.m_player.localEulerAngles.y);
-                __instance.m_northDirection = Quaternion.Euler(0f, 0f, 0f);
+                __instance.m_north.localRotation = Quaternion.Euler(0f, 0f, 0f);
+                __instance.m_tamer.localRotation = Quaternion.Euler(0f, 0f, -__instance.m_player.localEulerAngles.y + MainGameManager.Ref.dayAndNightScript.m_northDirection);
+                __instance.m_northDirection = Quaternion.Euler(0f, 0f, MainGameManager.Ref.dayAndNightScript.m_northDirection);
             }
 
             if (__instance.IsOpened())
-                __instance.m_mapRoot.localRotation = Quaternion.Euler(0f, 0f, 0f);
+                __instance.m_mapRoot.localRotation = Quaternion.Euler(0f, 0f, MainGameManager.Ref.dayAndNightScript.m_northDirection);
 
             return true;
         }
